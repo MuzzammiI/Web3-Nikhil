@@ -1,0 +1,16 @@
+body {
+    background-color: #1A1A1A; /* Dark background */
+    color: #FFFFFF; /* White text */
+  }
+  
+  button {
+    background-color: #8B0000; /* Dark Red */
+    color: #FFD700; /* Yellow */
+    border: 2px solid #FFD700;
+  }
+  
+  button:hover {
+    background-color: #FFD700;
+    color: #8B0000;
+  }
+  

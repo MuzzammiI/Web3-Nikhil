@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@tailwind utilities;
+
+body {
+  background-color: #121212;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+//-------------------Cryptoticker------------
+
+
+
+
+
+
+
