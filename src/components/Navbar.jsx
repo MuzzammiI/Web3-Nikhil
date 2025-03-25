@@ -21,11 +21,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check login state from localStorage
     const storedLoginState = localStorage.getItem("isLoggedIn");
-    if (storedLoginState === "true") setIsLoggedIn(true);
+    if (storedLoginState === "true") {
+      setIsLoggedIn(true);
+    }
   }, []);
 
   useEffect(() => {
+    // Close profile dropdown when clicking outside
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
         setProfileOpen(false);
@@ -36,6 +40,7 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    // Check if wallet is already connected
     const checkWallet = async () => {
       if (window.ethereum) {
         try {
@@ -66,13 +71,6 @@ const Navbar = () => {
     } else {
       alert("MetaMask not detected. Please install MetaMask.");
     }
-  };
-
-  const login = () => {
-    setTimeout(() => {
-      setIsLoggedIn(true);
-      localStorage.setItem("isLoggedIn", "true");
-    }, 500); // Simulating successful login delay
   };
 
   const logout = () => {
@@ -127,12 +125,12 @@ const Navbar = () => {
               >
                 Register
               </Link>
-              <button
+              <Link
+                to="/login"
                 className="bg-black text-white px-4 py-2 rounded-lg border border-gray-600 hover:bg-gray-800"
-                onClick={login}
               >
                 Login
-              </button>
+              </Link>
             </>
           ) : (
             <div className="relative" ref={profileRef}>

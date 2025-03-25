@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import CryptoTicker from "./components/CryptoTicker";
 import Footer from "./components/Footer";
 
+
 // Lazy loading pages for better performance
 const Home = lazy(() => import("./pages/Home"));
 const Trending = lazy(() => import("./pages/Trending"));
