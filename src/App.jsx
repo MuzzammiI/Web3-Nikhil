@@ -1,9 +1,11 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
+
 import Navbar from "./components/Navbar";
 import CryptoTicker from "./components/CryptoTicker";
 import Footer from "./components/Footer";
-
 
 // Lazy loading pages for better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -69,6 +71,9 @@ const App = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* ✅ Toast Notifications */}
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
     </div>
   );
 };
