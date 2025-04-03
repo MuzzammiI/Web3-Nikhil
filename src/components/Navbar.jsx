@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { ethers } from "ethers";
@@ -18,7 +18,7 @@ const Navbar = () => {
     const checkWallet = async () => {
       if (window.ethereum) {
         try {
-          const provider = new ethers.BrowserProvider(window.ethereum);
+          // const provider = new ethers.BrowserProvider(window.ethereum);
           const accounts = await window.ethereum.request({ method: "eth_accounts" });
           if (accounts.length > 0) {
             setWalletAddress(accounts[0]);
@@ -63,7 +63,7 @@ const Navbar = () => {
 
         {/* Navigation Links */}
         <ul
-          className={`md:flex md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 md:bg-transparent text-center md:text-left transition-transform duration-300 ease-in-out ${
+          className={`md:flex md:space-x-6 absolute md:static top-16 left-0 w-full md:w-auto bg-gray-900 z-1 h-full overflow-hidden md:bg-transparent text-center md:text-left transition-transform duration-300 ease-in-out ${
             menuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
           }`}
         >

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
+import SocialMediaIcons from "../SocialMediaIcons";
+import { FaEye } from "react-icons/fa";
 const News = () => {
   const [latestNews, setLatestNews] = useState([]);
   const [trendingNews, setTrendingNews] = useState([]);
   const [topNews, setTopNews] = useState([]);
-  const [likes, setLikes] = useState({});
-  const [dislikes, setDislikes] = useState({});
+  // const [likes, setLikes] = useState({});
+  // const [dislikes, setDislikes] = useState({});
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -30,16 +31,16 @@ const News = () => {
     fetchNews();
   }, []);
 
-  const handleLike = (id) => {
-    setLikes({ ...likes, [id]: (likes[id] || 0) + 1 });
-  };
+  // const handleLike = (id) => {
+  //   setLikes({ ...likes, [id]: (likes[id] || 0) + 1 });
+  // };
 
-  const handleDislike = (id) => {
-    setDislikes((prevDislikes) => ({
-      ...prevDislikes,
-      [id]: (prevDislikes[id] || 0) + 1, // Corrected syntax
-    }));
-  };
+  // const handleDislike = (id) => {
+  //   setDislikes((prevDislikes) => ({
+  //     ...prevDislikes,
+  //     [id]: (prevDislikes[id] || 0) + 1, // Corrected syntax
+  //   }));
+  // };
   
 
   const renderNewsCards = (news) => {
@@ -49,7 +50,7 @@ const News = () => {
         href={article.url} // Redirect to external news URL
         target="_blank"
         rel="noopener noreferrer"
-        className="block bg-black backdrop-blur-2xl p-4 rounded-2xl shadow-lg hover:shadow-2xl transition-transform duration-300 transform hover:scale-105"
+        className="block bg-white  backdrop-blur-2xl p-4 rounded-2xl transition-transform duration-100 transform hover:scale-101"
 
       >
         <img
@@ -57,31 +58,14 @@ const News = () => {
           alt={article.title}
           className="w-full h-48 object-cover rounded-xl"
         />
-        <h3 className="text-lg font-semibold mt-3 hover:text-blue-400 transition duration-300">
+        <h3 className="text-lg font-semibold mt-3 hover:text-blue-400 text-black transition duration-300">
           {article.title}
         </h3>
         <p className="text-sm text-gray-400">{article.body.slice(0, 100)}...</p>
         <div className="flex justify-between items-center mt-3">
-          <span className="text-xs text-gray-500">{article.published_on}</span>
+          <span className="text-xs flex items-center justify-center gap-2 text-gray-500"><FaEye /> {article.published_on}</span>
           <div className="flex gap-2">
-            <button
-              onClick={(e) => {
-                e.preventDefault(); // Prevent link navigation on button click
-                handleLike(article.id);
-              }}
-              className="bg-green-600 px-3 py-1 text-xs rounded-lg hover:bg-green-700"
-            >
-              👍 {likes[article.id] || 0}
-            </button>
-            <button
-              onClick={(e) => {
-                e.preventDefault(); // Prevent link navigation on button click
-                handleDislike(article.id);
-              }}
-              className="bg-red-600 px-3 py-1 text-xs rounded-lg hover:bg-red-700"
-            >
-              👎 {dislikes[article.id] || 0}
-            </button>
+          <SocialMediaIcons/>
           </div>
         </div>
       </a>

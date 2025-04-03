@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Trending from "./Trending";
-import AirdropSection from "./AirdropSection";
+import AirdropSection from "./Airdrops/AirdropSection";
+import Web3BlockchainSection from "../components/Web3BlockchainSection";
 
 const Home = () => {
   const [showHero, setShowHero] = useState(true);
@@ -42,12 +43,14 @@ const Home = () => {
   };
 
   return (
+    <>
+    <Web3BlockchainSection/>
     <div className="text-white bg-gray-900 min-h-screen">
       {/* Hero Section */}
       <AnimatePresence>
         {showHero && (
           <motion.div
-            className="text-center py-20 bg-gradient-to-r from-yellow-500 to-red-500"
+            className="text-center py-20 bg-gradient-to-r block from-yellow-500 to-red-500"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
@@ -124,6 +127,7 @@ const Home = () => {
         </div>
       </motion.section>
     </div>
+    </>
   );
 };
 
